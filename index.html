@@ -249,18 +249,27 @@
 </footer>
 
 <script>
-  function submitHero() {
-    const val = document.getElementById('heroEmail').value;
+  async function submitForm(emailId, wrapId, successId) {
+    const val = document.getElementById(emailId).value;
     if (!val || !val.includes('@')) { alert('Please enter a valid email.'); return; }
-    document.getElementById('heroFormWrap').style.display = 'none';
-    document.getElementById('heroSuccess').style.display = 'block';
+    try {
+      const res = await fetch('https://formspree.io/f/mojbzgbp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: val, source: emailId })
+      });
+      if (res.ok) {
+        document.getElementById(wrapId).style.display = 'none';
+        document.getElementById(successId).style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch(e) {
+      alert('Something went wrong. Please try again.');
+    }
   }
-  function submitEarly() {
-    const val = document.getElementById('earlyEmail').value;
-    if (!val || !val.includes('@')) { alert('Please enter a valid email.'); return; }
-    document.getElementById('earlyFormWrap').style.display = 'none';
-    document.getElementById('earlySuccess').style.display = 'block';
-  }
+  function submitHero() { submitForm('heroEmail','heroFormWrap','heroSuccess'); }
+  function submitEarly() { submitForm('earlyEmail','earlyFormWrap','earlySuccess'); }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
