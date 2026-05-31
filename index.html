@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --black: #0e0e0e;
     --white: #f5f2ed;
@@ -16,505 +15,163 @@
     --green-light: #5a9470;
     --green-pale: #e8f0eb;
     --accent: #c8a96e;
-    --text-muted: #7a7570;
   }
-
   html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.2rem 2.5rem;
-    background: rgba(14,14,14,0.85);
+    background: rgba(14,14,14,0.9);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid rgba(245,242,237,0.08);
   }
-
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.08em;
-    color: var(--white);
-    text-decoration: none;
-  }
-
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
   .logo span { color: var(--green-light); }
-
   nav a.nav-cta {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--accent);
-    padding: 0.5rem 1.2rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: opacity 0.2s;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--black); background: var(--accent); padding: 0.5rem 1.2rem; border-radius: 2px; text-decoration: none; transition: opacity 0.2s;
   }
-
   nav a.nav-cta:hover { opacity: 0.85; }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 3rem 4rem 4rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--green-light);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px; height: 1px;
-    background: var(--green-light);
-  }
-
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 7vw, 7rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    margin-bottom: 1.8rem;
-  }
-
-  h1 em {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(245,242,237,0.65);
-    max-width: 380px;
-    margin-bottom: 2.5rem;
-  }
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem 4rem; position: relative; z-index: 2; }
+  .hero-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--green-light); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 7vw, 7rem); line-height: 0.92; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.8rem; }
+  h1 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: 1.05rem; line-height: 1.7; color: rgba(245,242,237,0.65); max-width: 380px; margin-bottom: 2.5rem; }
 
   /* Email form */
-  .email-form {
-    display: flex;
-    gap: 0;
-    max-width: 420px;
-    border: 1px solid rgba(245,242,237,0.15);
-    border-radius: 3px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.04);
-    transition: border-color 0.3s;
-  }
-
-  .email-form:focus-within {
-    border-color: var(--green-light);
-  }
-
-  .email-form input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 1rem 1.25rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--white);
-  }
-
+  .email-form { display: flex; max-width: 420px; border: 1px solid rgba(245,242,237,0.15); border-radius: 3px; overflow: hidden; background: rgba(255,255,255,0.04); transition: border-color 0.3s; }
+  .email-form:focus-within { border-color: var(--green-light); }
+  .email-form input { flex: 1; background: transparent; border: none; outline: none; padding: 1rem 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--white); }
   .email-form input::placeholder { color: rgba(245,242,237,0.35); }
-
-  .email-form button {
-    background: var(--green);
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-    padding: 1rem 1.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-
+  .email-form button { background: var(--green); color: var(--white); border: none; cursor: pointer; padding: 1rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s; white-space: nowrap; }
   .email-form button:hover { background: var(--green-light); }
+  .form-note { margin-top: 0.75rem; font-size: 0.72rem; color: rgba(245,242,237,0.35); letter-spacing: 0.04em; }
+  .success-msg { display: none; background: var(--green-pale); color: var(--green); border-radius: 3px; padding: 1rem 1.25rem; font-size: 0.9rem; font-weight: 500; max-width: 420px; }
 
-  .form-note {
-    margin-top: 0.75rem;
-    font-size: 0.72rem;
-    color: rgba(245,242,237,0.35);
-    letter-spacing: 0.04em;
-  }
+  /* Hero right */
+  .hero-right { position: relative; overflow: hidden; background: #111; }
+  .hero-right::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(61,107,79,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(200,169,110,0.15) 0%, transparent 50%); z-index: 1; }
+  .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(245,242,237,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,242,237,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+  .hero-visual-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 8rem 3rem 4rem; gap: 1.2rem; }
 
-  .success-msg {
-    display: none;
-    background: var(--green-pale);
-    color: var(--green);
-    border-radius: 3px;
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    max-width: 420px;
-  }
-
-  /* Hero right — visual panel */
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-    background: #1a1a1a;
-  }
-
-  .hero-right::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 30% 60%, rgba(61,107,79,0.35) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(200,169,110,0.15) 0%, transparent 50%);
-    z-index: 1;
-  }
-
-  .hero-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(245,242,237,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,242,237,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  .hero-visual-content {
-    position: relative; z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8rem 3rem 4rem;
-    gap: 1.5rem;
-  }
-
+  /* Product cards with images */
   .product-card {
-    background: rgba(245,242,237,0.05);
-    border: 0.5px solid rgba(245,242,237,0.1);
-    border-radius: 4px;
-    padding: 1.25rem 1.5rem;
-    width: 100%;
-    max-width: 300px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    background: rgba(245,242,237,0.06);
+    border: 0.5px solid rgba(245,242,237,0.12);
+    border-radius: 8px;
+    width: 100%; max-width: 300px;
+    overflow: hidden;
     animation: float 6s ease-in-out infinite;
     backdrop-filter: blur(8px);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
+  .product-card:hover { transform: translateY(-4px) !important; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .product-card:nth-child(2) { animation-delay: -2s; margin-left: 30px; }
+  .product-card:nth-child(3) { animation-delay: -4s; margin-left: -15px; }
+  @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
 
-  .product-card:nth-child(2) { animation-delay: -2s; margin-left: 40px; }
-  .product-card:nth-child(3) { animation-delay: -4s; margin-left: -20px; }
+  .product-img-wrap { width: 100%; height: 160px; overflow: hidden; position: relative; }
+  .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+  .product-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(14,14,14,0.6)); }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
-
-  .product-icon {
-    width: 44px; height: 44px;
-    background: var(--green);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-
+  .product-body { padding: 0.9rem 1rem; display: flex; align-items: center; gap: 0.75rem; }
   .product-info { flex: 1; }
   .product-name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
   .product-price { font-size: 0.75rem; color: var(--accent); margin-top: 2px; }
+  .product-badge { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green); color: var(--white); padding: 3px 8px; border-radius: 2px; white-space: nowrap; }
 
-  .product-badge {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--green);
-    color: var(--white);
-    padding: 3px 8px;
-    border-radius: 2px;
-  }
-
-  /* ── SOCIAL PROOF ── */
-  .social-proof {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
-    border-top: 0.5px solid rgba(245,242,237,0.1);
-  }
-
+  /* Social proof */
+  .social-proof { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 0.5px solid rgba(245,242,237,0.1); }
   .proof-stat { text-align: center; }
-  .proof-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--white);
-    line-height: 1;
-  }
-  .proof-label {
-    font-size: 0.68rem;
-    color: rgba(245,242,237,0.4);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
+  .proof-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--white); line-height: 1; }
+  .proof-label { font-size: 0.68rem; color: rgba(245,242,237,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .proof-divider { width: 1px; height: 36px; background: rgba(245,242,237,0.12); }
 
-  .proof-divider {
-    width: 1px; height: 36px;
-    background: rgba(245,242,237,0.12);
-  }
+  /* PRODUCTS SECTION */
+  .products-section { background: #141414; padding: 7rem 4rem; }
+  .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 1rem; }
+  .products-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; color: var(--white); margin-bottom: 0.75rem; }
+  .products-section h2 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent); }
+  .products-section > p { color: rgba(245,242,237,0.5); font-size: 0.95rem; margin-bottom: 3.5rem; max-width: 500px; line-height: 1.6; }
 
-  /* ── SECTION: WHY ── */
-  .why-section {
-    background: var(--cream);
-    color: var(--black);
-    padding: 7rem 4rem;
-  }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .product-full-card { background: #1c1c1c; border-radius: 8px; overflow: hidden; border: 0.5px solid rgba(245,242,237,0.06); transition: transform 0.3s, border-color 0.3s; }
+  .product-full-card:hover { transform: translateY(-6px); border-color: var(--green-light); }
+  .product-full-img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.4s; }
+  .product-full-card:hover .product-full-img { transform: scale(1.04); }
+  .product-full-body { padding: 1.25rem; }
+  .product-full-name { font-size: 1rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; }
+  .product-full-desc { font-size: 0.82rem; color: rgba(245,242,237,0.45); line-height: 1.6; margin-bottom: 1rem; }
+  .product-full-footer { display: flex; justify-content: space-between; align-items: center; }
+  .product-full-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); }
+  .product-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(61,107,79,0.3); color: var(--green-light); padding: 4px 10px; border-radius: 2px; border: 0.5px solid var(--green); }
 
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 1rem;
-  }
+  /* VIDEO SECTION */
+  .video-section { background: var(--cream); padding: 7rem 4rem; }
+  .video-section .section-label { color: var(--green); }
+  .video-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; color: var(--black); margin-bottom: 0.75rem; }
+  .video-section h2 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--green); }
+  .video-section > p { color: #6b6865; font-size: 0.95rem; margin-bottom: 3rem; max-width: 500px; line-height: 1.6; }
+  .video-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+  .video-main { border-radius: 8px; overflow: hidden; aspect-ratio: 16/9; background: #111; }
+  .video-main iframe { width: 100%; height: 100%; border: none; display: block; }
+  .video-side { display: flex; flex-direction: column; gap: 1.5rem; }
+  .video-thumb { border-radius: 8px; overflow: hidden; aspect-ratio: 16/9; background: #111; }
+  .video-thumb iframe { width: 100%; height: 100%; border: none; display: block; }
 
-  .why-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    line-height: 1;
-    color: var(--black);
-    max-width: 600px;
-    margin-bottom: 4rem;
-  }
+  /* WHY SECTION */
+  .why-section { background: var(--cream); padding: 7rem 4rem; }
+  .why-section .section-label { color: var(--green); }
+  .why-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; color: var(--black); max-width: 600px; margin-bottom: 4rem; }
+  .why-section h2 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--green); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .feature { padding: 2rem; background: var(--white); border-radius: 4px; border: 0.5px solid rgba(14,14,14,0.08); transition: transform 0.25s, box-shadow 0.25s; }
+  .feature:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(14,14,14,0.08); }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .feature h3 { font-size: 1rem; font-weight: 500; color: var(--black); margin-bottom: 0.6rem; }
+  .feature p { font-size: 0.88rem; line-height: 1.65; color: #5a5753; }
 
-  .why-section h2 em {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    color: var(--green);
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .feature {
-    padding: 2rem;
-    background: var(--white);
-    border-radius: 4px;
-    border: 0.5px solid rgba(14,14,14,0.08);
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-
-  .feature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(14,14,14,0.08);
-  }
-
-  .feature-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .feature h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--black);
-    margin-bottom: 0.6rem;
-  }
-
-  .feature p {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: #5a5753;
-  }
-
-  /* ── EARLY ACCESS ── */
-  .early-section {
-    background: var(--green);
-    padding: 7rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .early-section::before {
-    content: 'FITNOOK';
-    position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18vw;
-    color: rgba(255,255,255,0.04);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    letter-spacing: 0.1em;
-    pointer-events: none;
-  }
-
-  .early-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-
-  .early-section h2 em {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .early-section p {
-    font-size: 1rem;
-    color: rgba(245,242,237,0.75);
-    max-width: 460px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-    position: relative;
-  }
-
-  .early-form {
-    display: flex;
-    gap: 0;
-    max-width: 440px;
-    margin: 0 auto;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(245,242,237,0.2);
-    position: relative;
-  }
-
-  .early-form input {
-    flex: 1;
-    background: rgba(245,242,237,0.1);
-    border: none;
-    outline: none;
-    padding: 1.1rem 1.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--white);
-  }
-
+  /* EARLY ACCESS */
+  .early-section { background: var(--green); padding: 7rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .early-section::before { content: 'FITNOOK'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 18vw; color: rgba(255,255,255,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; letter-spacing: 0.1em; pointer-events: none; }
+  .early-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 5rem); color: var(--white); line-height: 1; margin-bottom: 1rem; position: relative; }
+  .early-section h2 em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent); }
+  .early-section > p { font-size: 1rem; color: rgba(245,242,237,0.75); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
+  .early-form { display: flex; max-width: 440px; margin: 0 auto; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(245,242,237,0.2); position: relative; }
+  .early-form input { flex: 1; background: rgba(245,242,237,0.1); border: none; outline: none; padding: 1.1rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--white); }
   .early-form input::placeholder { color: rgba(245,242,237,0.4); }
-
-  .early-form button {
-    background: var(--accent);
-    color: var(--black);
-    border: none;
-    cursor: pointer;
-    padding: 1.1rem 1.75rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-  }
-
+  .early-form button { background: var(--accent); color: var(--black); border: none; cursor: pointer; padding: 1.1rem 1.75rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: opacity 0.2s; }
   .early-form button:hover { opacity: 0.88; }
+  .early-note { margin-top: 1rem; font-size: 0.72rem; color: rgba(245,242,237,0.4); letter-spacing: 0.04em; position: relative; }
+  .early-success { display: none; background: rgba(245,242,237,0.15); color: var(--white); border-radius: 3px; padding: 1rem 1.5rem; font-size: 0.9rem; font-weight: 500; max-width: 440px; margin: 0 auto; position: relative; }
 
-  .early-note {
-    margin-top: 1rem;
-    font-size: 0.72rem;
-    color: rgba(245,242,237,0.4);
-    letter-spacing: 0.04em;
-    position: relative;
-  }
+  /* FOOTER */
+  footer { background: #080808; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid rgba(245,242,237,0.06); }
+  footer p { font-size: 0.75rem; color: rgba(245,242,237,0.25); letter-spacing: 0.04em; }
 
-  .early-success {
-    display: none;
-    background: rgba(245,242,237,0.15);
-    color: var(--white);
-    border-radius: 3px;
-    padding: 1rem 1.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    max-width: 440px;
-    margin: 0 auto;
-    position: relative;
-  }
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: #080808;
-    padding: 2.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 0.5px solid rgba(245,242,237,0.06);
-  }
-
-  footer .logo { font-size: 1.2rem; }
-
-  footer p {
-    font-size: 0.75rem;
-    color: rgba(245,242,237,0.25);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── ANIMATIONS ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
     .hero-left { padding: 7rem 1.5rem 3rem; }
-    .features-grid { grid-template-columns: 1fr; }
-    .why-section, .early-section { padding: 5rem 1.5rem; }
+    .products-grid, .features-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .video-side { display: none; }
+    .why-section, .early-section, .products-section, .video-section { padding: 5rem 1.5rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     nav { padding: 1rem 1.5rem; }
-    .social-proof { flex-wrap: wrap; gap: 1rem; }
   }
 </style>
 </head>
@@ -532,31 +189,18 @@
     <p class="hero-eyebrow">Home Gym Gear · Small Space · Big Results</p>
     <h1>Your<br>Small Space.<br><em>Full Power.</em></h1>
     <p class="hero-sub">Premium gym accessories designed for apartments, studios, and small spaces. No excuses. No wasted space. Just results.</p>
-
     <div class="email-form" id="heroFormWrap">
       <input type="email" id="heroEmail" placeholder="Enter your email address" />
       <button onclick="submitHero()">Notify Me</button>
     </div>
-    <div class="success-msg" id="heroSuccess">
-      🎉 You're on the list! We'll be in touch when we launch.
-    </div>
+    <div class="success-msg" id="heroSuccess">🎉 You're on the list! We'll be in touch when we launch.</div>
     <p class="form-note">No spam. Unsubscribe anytime. Launch discount inside.</p>
-
     <div class="social-proof">
-      <div class="proof-stat">
-        <div class="proof-num">2,400+</div>
-        <div class="proof-label">On Waitlist</div>
-      </div>
+      <div class="proof-stat"><div class="proof-num">2,400+</div><div class="proof-label">On Waitlist</div></div>
       <div class="proof-divider"></div>
-      <div class="proof-stat">
-        <div class="proof-num">4.9★</div>
-        <div class="proof-label">Avg Rating</div>
-      </div>
+      <div class="proof-stat"><div class="proof-num">4.9★</div><div class="proof-label">Avg Rating</div></div>
       <div class="proof-divider"></div>
-      <div class="proof-stat">
-        <div class="proof-num">48HR</div>
-        <div class="proof-label">Dispatch</div>
-      </div>
+      <div class="proof-stat"><div class="proof-num">48HR</div><div class="proof-label">Dispatch</div></div>
     </div>
   </div>
 
@@ -564,28 +208,96 @@
     <div class="hero-grid"></div>
     <div class="hero-visual-content">
       <div class="product-card">
-        <div class="product-icon">💪</div>
-        <div class="product-info">
-          <div class="product-name">Resistance Band Set</div>
-          <div class="product-price">From £24.99</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop" alt="Resistance Bands" />
+          <div class="product-img-overlay"></div>
         </div>
-        <span class="product-badge">New</span>
+        <div class="product-body">
+          <div class="product-info"><div class="product-name">Resistance Band Set</div><div class="product-price">From £24.99</div></div>
+          <span class="product-badge">New</span>
+        </div>
       </div>
       <div class="product-card">
-        <div class="product-icon">🧘</div>
-        <div class="product-info">
-          <div class="product-name">Foldable Gym Mat</div>
-          <div class="product-price">From £34.99</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&auto=format&fit=crop" alt="Gym Mat" />
+          <div class="product-img-overlay"></div>
         </div>
-        <span class="product-badge">Popular</span>
+        <div class="product-body">
+          <div class="product-info"><div class="product-name">Foldable Gym Mat</div><div class="product-price">From £34.99</div></div>
+          <span class="product-badge">Popular</span>
+        </div>
       </div>
       <div class="product-card">
-        <div class="product-icon">🏋️</div>
-        <div class="product-info">
-          <div class="product-name">Wall Storage Hooks</div>
-          <div class="product-price">From £19.99</div>
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop" alt="Home Gym Setup" />
+          <div class="product-img-overlay"></div>
         </div>
-        <span class="product-badge">Launch</span>
+        <div class="product-body">
+          <div class="product-info"><div class="product-name">Wall Storage Hooks</div><div class="product-price">From £19.99</div></div>
+          <span class="product-badge">Launch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+  <p class="section-label">Our Products</p>
+  <h2>Everything You Need.<br><em>Nothing You Don't.</em></h2>
+  <p>Curated gear for people who take their training seriously — no matter how small their space.</p>
+  <div class="products-grid">
+    <div class="product-full-card fade-up">
+      <img class="product-full-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop" alt="Resistance Bands" />
+      <div class="product-full-body">
+        <div class="product-full-name">Pro Resistance Band Set</div>
+        <div class="product-full-desc">5 resistance levels from light to extra heavy. Fabric coated, anti-snap, includes carry bag and workout guide.</div>
+        <div class="product-full-footer">
+          <div class="product-full-price">£24.99</div>
+          <span class="product-tag">Bestseller</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-full-card fade-up" style="transition-delay:0.1s">
+      <img class="product-full-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&auto=format&fit=crop" alt="Gym Mat" />
+      <div class="product-full-body">
+        <div class="product-full-name">Foldable Gym Mat</div>
+        <div class="product-full-desc">Extra thick 10mm TPE mat. Folds flat for storage, non-slip surface, perfect for yoga, pilates or HIIT.</div>
+        <div class="product-full-footer">
+          <div class="product-full-price">£34.99</div>
+          <span class="product-tag">New In</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-full-card fade-up" style="transition-delay:0.2s">
+      <img class="product-full-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop" alt="Wall Hooks" />
+      <div class="product-full-body">
+        <div class="product-full-name">Wall Storage Hooks</div>
+        <div class="product-full-desc">Heavy duty steel wall hooks for bands, jump ropes and accessories. Keeps your space clean and gym-ready.</div>
+        <div class="product-full-footer">
+          <div class="product-full-price">£19.99</div>
+          <span class="product-tag">Launch Price</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+  <p class="section-label">See It In Action</p>
+  <h2>Small Space.<br><em>Real Workouts.</em></h2>
+  <p>Watch how people just like you are transforming small spaces into serious training zones.</p>
+  <div class="video-grid">
+    <div class="video-main">
+      <iframe src="https://www.youtube.com/embed/IODxDxX7oi4" title="Small Space Home Workout" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-side">
+      <div class="video-thumb">
+        <iframe src="https://www.youtube.com/embed/gC_L9qAHVJ8" title="Resistance Band Workout" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-thumb">
+        <iframe src="https://www.youtube.com/embed/vc1E5CfRfos" title="Apartment Gym Setup" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -595,38 +307,13 @@
 <section class="why-section">
   <p class="section-label">Why TheFitNook</p>
   <h2>Gear Built for <em>Real Homes,</em> Not Just Big Gyms</h2>
-
   <div class="features-grid">
-    <div class="feature fade-up">
-      <div class="feature-icon">📦</div>
-      <h3>Compact by Design</h3>
-      <p>Every product is chosen specifically for small spaces — apartments, bedrooms, studios. No bulk, no clutter.</p>
-    </div>
-    <div class="feature fade-up" style="transition-delay:0.1s">
-      <div class="feature-icon">⚡</div>
-      <h3>Fast UK Delivery</h3>
-      <p>All orders dispatched within 48 hours. No waiting weeks for your gear to arrive from the other side of the world.</p>
-    </div>
-    <div class="feature fade-up" style="transition-delay:0.2s">
-      <div class="feature-icon">🏷️</div>
-      <h3>Premium Without the Price</h3>
-      <p>Pro-grade quality at honest prices. We cut out the middlemen so you get more for your money every time.</p>
-    </div>
-    <div class="feature fade-up" style="transition-delay:0.3s">
-      <div class="feature-icon">🎁</div>
-      <h3>Beautifully Packaged</h3>
-      <p>Every order arrives in branded packaging with a personal thank-you note. Built to gift, built to impress.</p>
-    </div>
-    <div class="feature fade-up" style="transition-delay:0.4s">
-      <div class="feature-icon">🔄</div>
-      <h3>Hassle-Free Returns</h3>
-      <p>Not happy? We'll make it right. Simple 30-day returns, no questions asked, no stress.</p>
-    </div>
-    <div class="feature fade-up" style="transition-delay:0.5s">
-      <div class="feature-icon">🌱</div>
-      <h3>Built to Last</h3>
-      <p>We only stock products we've tested ourselves. Durable materials, rigorous quality checks, real results.</p>
-    </div>
+    <div class="feature fade-up"><div class="feature-icon">📦</div><h3>Compact by Design</h3><p>Every product chosen for small spaces — apartments, bedrooms, studios. No bulk, no clutter.</p></div>
+    <div class="feature fade-up" style="transition-delay:0.1s"><div class="feature-icon">⚡</div><h3>Fast UK Delivery</h3><p>All orders dispatched within 48 hours. No waiting weeks for your gear to arrive.</p></div>
+    <div class="feature fade-up" style="transition-delay:0.2s"><div class="feature-icon">🏷️</div><h3>Premium Without the Price</h3><p>Pro-grade quality at honest prices. We cut out the middlemen so you get more every time.</p></div>
+    <div class="feature fade-up" style="transition-delay:0.3s"><div class="feature-icon">🎁</div><h3>Beautifully Packaged</h3><p>Every order arrives in branded packaging with a personal thank-you note. Built to gift.</p></div>
+    <div class="feature fade-up" style="transition-delay:0.4s"><div class="feature-icon">🔄</div><h3>Hassle-Free Returns</h3><p>Not happy? We'll make it right. Simple 30-day returns, no questions asked.</p></div>
+    <div class="feature fade-up" style="transition-delay:0.5s"><div class="feature-icon">🌱</div><h3>Built to Last</h3><p>Only products we've tested ourselves. Durable materials, rigorous quality checks.</p></div>
   </div>
 </section>
 
@@ -634,14 +321,11 @@
 <section class="early-section" id="early">
   <h2>Join the <em>Founding</em> List</h2>
   <p>Be first through the door. Early access members get 20% off their first order, exclusive launch products, and founding member status.</p>
-
   <div class="early-form" id="earlyFormWrap">
     <input type="email" id="earlyEmail" placeholder="your@email.com" />
     <button onclick="submitEarly()">Claim My Spot</button>
   </div>
-  <div class="early-success" id="earlySuccess">
-    🎉 You're in! Check your inbox — your 20% discount code is on its way.
-  </div>
+  <div class="early-success" id="earlySuccess">🎉 You're in! Check your inbox — your 20% discount code is on its way.</div>
   <p class="early-note">Already 2,400+ people on the list. Spots are limited.</p>
 </section>
 
@@ -659,18 +343,15 @@
     document.getElementById('heroFormWrap').style.display = 'none';
     document.getElementById('heroSuccess').style.display = 'block';
   }
-
   function submitEarly() {
     const val = document.getElementById('earlyEmail').value;
     if (!val || !val.includes('@')) { alert('Please enter a valid email.'); return; }
     document.getElementById('earlyFormWrap').style.display = 'none';
     document.getElementById('earlySuccess').style.display = 'block';
   }
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
